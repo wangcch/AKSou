@@ -96,9 +96,45 @@ switch ($grade){
         $grade=null;
 }
 
+$sql="SELECT id,name,gender,class,school FROM users ";
+$flog=0;
+if ($keyword!=null){
+    $sql.=" WHERE name LIKE '%{$keyword}%' ";
+    $flog=1;
+}
+if ($collage!=null){
+    if ($flog==0){
+        $sql.=" WHERE school = '{$collage}' ";
+        $flog=1;
+    }else{
+        $sql.=" AND school = '{$collage}' ";
+    }
+}
+if ($class!=null){
+    if ($flog==0){
+        $sql.=" WHERE class LIKE '%{$class}%' ";
+        $flog=1;
+    }else{
+        $sql.=" AND class LIKE '%{$class}%' ";
+    }
+}
+if ($grade!=null){
+    if ($flog==0){
+        $sql.=" WHERE class LIKE '%{$grade}%' ";
+        $flog=1;
+    }else{
+        $sql.=" AND class LIKE '%{$grade}%' ";
+    }
+}
+if ($sex!=null){
+    if ($flog==0){
+        $sql.=" WHERE gender = '{$sex}' ";
+        $flog=1;
+    }else{
+        $sql.=" AND gender = '{$sex}' ";
+    }
+}
 
-$sql="SELECT id,name,gender,class,school FROM users WHERE name LIKE '%{$keyword}%' AND school = '{$collage}' AND class LIKE '%{$class}%{$grade}%' AND gender='{$sex}'";
-echo "$sql";
 $rows=$pdo->query($sql);
 
 ?>
@@ -112,11 +148,21 @@ $rows=$pdo->query($sql);
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>AKSou</title>
     <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/expert.css">
 </head>
 <body>
 
-
-<div class="container center">
+<div class="container" style="margin: auto;text-align: center;">
+    <div class="head">
+        <div class="img">
+            <img src="img/ak.png"/>
+        </div>
+        <div class="nav">
+            <span class="tlt">共有<?php echo $rows->rowCount()?>条记录</span>
+            <span><a href="expert.php">返回搜索</a></span>
+        </div>
+        <div class="clean"></div>
+    </div>
 
     <table class="tab">
         <tr>
@@ -150,7 +196,6 @@ $rows=$pdo->query($sql);
 
 
     </table>
-    <p>共有<?php echo $rows->rowCount()?>条记录</p>
 </div>
 
 

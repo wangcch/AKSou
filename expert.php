@@ -20,10 +20,13 @@
 </head>
 <body>
 <div class="head">
-    <img src="img/ak.png"/>
+    <div class="img">
+        <img src="img/ak.png"/>
+    </div>
     <div class="nav">
         <span class="tlt"><b>高级搜索</b></span>
         <span><a href="index.php">返回主页</a></span>
+        <span class="clean"></span>
     </div>
     <div class="clean"></div>
 </div>

@@ -29,7 +29,7 @@ $str = $_POST['search_str'];
             <input type="search" name="search_str" id="search-input" class="input" value="<?php echo $str?>" autocomplete="off">
             <input type="submit" class="btn" value="搜索">
 
-            <p><a href="">高级搜索</a></p>
+            <p><a href="expert.php">高级搜索</a></p>
         </form>
 
     </div>
