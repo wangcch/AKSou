@@ -38,6 +38,7 @@ $str = $_POST['search_str'];
 
 <table class="tab">
     <tr>
+        <th>序号</th>
         <th>学号</th>
         <th>姓名</th>
         <th>性别</th>
@@ -49,18 +50,21 @@ $str = $_POST['search_str'];
 
     $sql="SELECT id,name,gender,class,school FROM users WHERE ".$select."='{$str}'";
     $rows=$pdo->query($sql);
+    $time=1;
     if($rows->rowCount()>0) {
         foreach ($rows as $row) {
             echo "<tr>";
+            echo "<td>{$time}</td>";
             echo "<td>{$row['id']}</td>";
             echo "<td>{$row['name']}</td>";
             echo "<td>{$row['gender']}</td>";
             echo "<td>{$row['class']}</td>";
             echo "<td>{$row['school']}</td>";
             echo "</tr>";
+            $time++;
         }
     }else{
-        echo "<tr><td colspan='5'>无'{$str}'数据</td></tr>";
+        echo "<tr><td colspan='6'>无'{$select}'为'{$str}'数据</td></tr>";
     }
     ?>
 

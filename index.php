@@ -13,6 +13,7 @@
     <meta charset="UTF-8">
     <title>AKSou</title>
     <link rel="stylesheet" href="css/main.css">
+    <script src="js/jquery-3.2.1.min.js"></script>
 </head>
 <body>
 <header>
@@ -22,10 +23,6 @@
 
     <div class="tlt">
         <img src="img/ak.png">
-        <script src="http://ajax.microsoft.com/ajax/jQuery/jquery-1.7.2.min.js"></script>
-        <script>
-            $('img').bind("contextmenu", function(e){ return false; })
-        </script>
         <p>不能搜的搜索</p>
     </div>
 
@@ -40,27 +37,13 @@
             <input type="search" name="search_str" id="search-input" class="input" autocomplete="off">
             <input type="submit" class="btn" value="搜索">
 
-            <p><a href="">高级搜索</a></p>
+            <p><a href="expert.php">高级搜索</a></p>
         </form>
 
-        <div class="suggest" id="search-suggest" style="display: none">
-            <ul>
-                <li>demo1</li>
-                <li>demo2</li>
-            </ul>
-        </div>
-        <script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
-        <script>
-            $('#search-input').bind('keyup', function () {
-                $('#search-suggest').show().css({
-                    top: $('#search-input').offset().top + $('#search-input').height + 10,
-                    left: $('#search-input').offset().left
-                });
-            })
-        </script>
+
+
+
     </div>
-
-
 
 
 </div>
