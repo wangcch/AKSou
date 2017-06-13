@@ -17,6 +17,13 @@
     <title>AKSou</title>
     <link rel="stylesheet" href="css/expert.css">
     <script src="js/jquery-3.2.1.min.js"></script>
+    <script>
+        $(function(){
+            var myDate = new Date();
+            var year = myDate.getYear()+1900;
+            $("#year").html(year);
+        });
+    </script>
 </head>
 <body>
 <div class="head">
@@ -35,10 +42,10 @@
     <form action="show2.php" method="post">
         <div class="s-list bgColor">
             <div class="l1">
-                <span><b>姓名关键字</b></span>
+                <span><b>姓名</b></span>
             </div>
             <div class="l2">
-                <input type="text" name="name-keyword" id="name-keyword">
+                <input type="text" name="name-keyword" id="name-keyword" placeholder="可输入关键字">
             </div>
             <div class="clean"></div>
         </div>
@@ -72,7 +79,7 @@
                 <span><b>班级</b></span>
             </div>
             <div class="l2">
-                <input type="text" name="class" id="class">
+                <input type="text" name="class" id="class" placeholder="可输入关键字">
             </div>
             <div class="clean"></div>
         </div>
@@ -111,6 +118,9 @@
         </div>
     </form>
 </div>
+<footer>
+    <p>&copy;2016-<span id="year"></span> <a href="http://theyear.space">THEYEAR</a></p>
+</footer>
 
 </body>
 </html>

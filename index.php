@@ -14,6 +14,13 @@
     <title>AKSou</title>
     <link rel="stylesheet" href="css/main.css">
     <script src="js/jquery-3.2.1.min.js"></script>
+    <script>
+        $(function(){
+            var myDate = new Date();
+            var year = myDate.getYear()+1900;
+            $("#year").html(year);
+        });
+    </script>
 </head>
 <body>
 <header>
@@ -45,10 +52,10 @@
 
     </div>
 
-
+    <footer>
+        <p>&copy;2016-<span id="year"></span> <a href="http://theyear.space">THEYEAR</a></p>
+    </footer>
 </div>
-<footer>
 
-</footer>
 </body>
 </html>

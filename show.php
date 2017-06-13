@@ -1,4 +1,9 @@
 <?php
+$url="http://theyear.space/aksou";
+if( $_SERVER['HTTP_REFERER'] == "" )
+{
+    header("Location:".$url); exit;
+}
 require_once 'connect.php';
 $select = $_POST['select'];
 $str = $_POST['search_str'];
@@ -8,7 +13,7 @@ $str = $_POST['search_str'];
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>aksou</title>
+    <title>AKSou</title>
     <link rel="stylesheet" href="css/main.css">
 </head>
 <body>

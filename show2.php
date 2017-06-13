@@ -5,13 +5,19 @@
  * Date: 2017/6/12
  * Time: 21:46
  */
+$url="http://theyear.space/aksou";
+if( $_SERVER['HTTP_REFERER'] == "" )
+{
+    header("Location:".$url); exit;
+}
 header("content-type:text/html;charset=utf-8");
 require_once 'connect.php';
-$keyword=$_POST["name-keyword"];
-$collage=$_POST["collage-select"];
-$class=$_POST["class"];
-$sex=$_POST["sex-select"];
-$grade=$_POST["grade-select"];
+
+$keyword = $_POST["name-keyword"];
+$collage = $_POST["collage-select"];
+$class = $_POST["class"];
+$sex = $_POST["sex-select"];
+$grade = $_POST["grade-select"];
 
 
 //echo "$keyword"."<br>";
@@ -20,122 +26,123 @@ $grade=$_POST["grade-select"];
 //echo "$sex"."<br>";
 //echo "$grade"."<br>";
 
-switch ($collage){
+switch ($collage) {
     case "xw":
-        $collage="信息与网络工程学院";
+        $collage = "信息与网络工程学院";
         break;
     case "dq":
-        $collage="电气与电子工程学院";
+        $collage = "电气与电子工程学院";
         break;
     case "hc":
-        $collage="化学与材料工程学院";
+        $collage = "化学与材料工程学院";
         break;
     case "zh":
-        $collage="资源与环境学院";
+        $collage = "资源与环境学院";
         break;
     case "jx":
-        $collage="机械工程学院";
+        $collage = "机械工程学院";
         break;
     case "sy":
-        $collage="食品药品学院";
+        $collage = "食品药品学院";
         break;
     case "sk":
-        $collage="生命科学学院";
+        $collage = "生命科学学院";
         break;
     case "dk":
-        $collage="动物科学学院";
+        $collage = "动物科学学院";
         break;
     case "wy":
-        $collage="外国语学院";
+        $collage = "外国语学院";
         break;
     case "rw":
-        $collage="人文学院";
+        $collage = "人文学院";
         break;
     case "cj":
-        $collage="财经学院";
+        $collage = "财经学院";
         break;
     case "gl":
-        $collage="管理学院";
+        $collage = "管理学院";
         break;
     case "jz":
-        $collage="建筑学院";
+        $collage = "建筑学院";
         break;
-    case "ny":
-        $collage="农学院";
+    case "nx":
+        $collage = "农学院";
         break;
     case "null":
-        $collage=null;
+        $collage = null;
 }
 
-switch ($sex){
+switch ($sex) {
     case "null":
-        $sex=null;
+        $sex = null;
         break;
     case "1":
-        $sex="男";
+        $sex = "男";
         break;
     case "0":
-        $sex="女";
+        $sex = "女";
         break;
 
 }
-switch ($grade){
+switch ($grade) {
     case "g3":
-        $grade="13";
+        $grade = "13";
         break;
     case "g4":
-        $grade="14";
+        $grade = "14";
         break;
     case "g5":
-        $grade="15";
+        $grade = "15";
         break;
     case "g6":
-        $grade="16";
+        $grade = "16";
         break;
     default:
-        $grade=null;
+        $grade = null;
 }
 
-$sql="SELECT id,name,gender,class,school FROM users ";
-$flog=0;
-if ($keyword!=null){
-    $sql.=" WHERE name LIKE '%{$keyword}%' ";
-    $flog=1;
+$sql = "SELECT id,name,gender,class,school FROM users ";
+$flog = 0;
+if ($keyword != null) {
+    $sql .= " WHERE name LIKE '%{$keyword}%' ";
+    $flog = 1;
 }
-if ($collage!=null){
-    if ($flog==0){
-        $sql.=" WHERE school = '{$collage}' ";
-        $flog=1;
-    }else{
-        $sql.=" AND school = '{$collage}' ";
+if ($collage != null) {
+    if ($flog == 0) {
+        $sql .= " WHERE school = '{$collage}' ";
+        $flog = 1;
+    } else {
+        $sql .= " AND school = '{$collage}' ";
     }
 }
-if ($class!=null){
-    if ($flog==0){
-        $sql.=" WHERE class LIKE '%{$class}%' ";
-        $flog=1;
-    }else{
-        $sql.=" AND class LIKE '%{$class}%' ";
+if ($class != null) {
+    if ($flog == 0) {
+        $sql .= " WHERE class LIKE '%{$class}%' ";
+        $flog = 1;
+    } else {
+        $sql .= " AND class LIKE '%{$class}%' ";
     }
 }
-if ($grade!=null){
-    if ($flog==0){
-        $sql.=" WHERE class LIKE '%{$grade}%' ";
-        $flog=1;
-    }else{
-        $sql.=" AND class LIKE '%{$grade}%' ";
+if ($grade != null) {
+    if ($flog == 0) {
+        $sql .= " WHERE class LIKE '%{$grade}%' ";
+        $flog = 1;
+    } else {
+        $sql .= " AND class LIKE '%{$grade}%' ";
     }
 }
-if ($sex!=null){
-    if ($flog==0){
-        $sql.=" WHERE gender = '{$sex}' ";
-        $flog=1;
-    }else{
-        $sql.=" AND gender = '{$sex}' ";
+if ($sex != null) {
+    if ($flog == 0) {
+        $sql .= " WHERE gender = '{$sex}' ";
+        $flog = 1;
+    } else {
+        $sql .= " AND gender = '{$sex}' ";
     }
 }
 
-$rows=$pdo->query($sql);
+
+$rows = $pdo->query($sql);
 
 ?>
 
@@ -158,7 +165,7 @@ $rows=$pdo->query($sql);
             <img src="img/ak.png"/>
         </div>
         <div class="nav">
-            <span class="tlt">共有<?php echo $rows->rowCount()?>条记录</span>
+            <span class="tlt">共有<?php echo $rows->rowCount() ?>条记录</span>
             <span><a href="expert.php">返回搜索</a></span>
         </div>
         <div class="clean"></div>
@@ -175,8 +182,8 @@ $rows=$pdo->query($sql);
         </tr>
 
         <?php
-        $time=1;
-        if($rows->rowCount()>0) {
+        $time = 1;
+        if ($rows->rowCount() > 0) {
             foreach ($rows as $row) {
                 echo "<tr>";
                 echo "<td>{$time}</td>";
@@ -188,11 +195,10 @@ $rows=$pdo->query($sql);
                 echo "</tr>";
                 $time++;
             }
-        }else{
+        } else {
             echo "<tr><td colspan='6'>null</td></tr>";
         }
         ?>
-
 
 
     </table>
