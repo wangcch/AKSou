@@ -5,11 +5,7 @@
  * Date: 2017/6/12
  * Time: 21:46
  */
-$url="http://theyear.space/aksou";
-if( $_SERVER['HTTP_REFERER'] == "" )
-{
-    header("Location:".$url); exit;
-}
+
 header("content-type:text/html;charset=utf-8");
 require_once 'connect.php';
 

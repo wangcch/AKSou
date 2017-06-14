@@ -1,9 +1,4 @@
 <?php
-$url="http://theyear.space/aksou";
-if( $_SERVER['HTTP_REFERER'] == "" )
-{
-    header("Location:".$url); exit;
-}
 require_once 'connect.php';
 $select = $_POST['select'];
 $str = $_POST['search_str'];
